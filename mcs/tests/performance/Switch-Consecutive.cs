@@ -28,6 +28,7 @@ class ConsecutiveSuite
         Test4(nrOfTests);
         Test5(nrOfTests);
         Test6(nrOfTests);
+        Test7(nrOfTests);
     }
 
     [MethodImplAttribute(MethodImplOptions.NoInlining)]
@@ -3825,6 +3826,48 @@ class ConsecutiveSuite
         stopWatch.Stop ();
 
         Console.WriteLine ("Cons 6: " + stopWatch.Elapsed.TotalMilliseconds);
+    }
+
+    public static void Test7(int runs)
+    {
+        // Generate the numbers needed for testing
+        Random rand = new Random();
+        int[] input = new int[] { 100, 200, 300, 400, 500, 600 };
+        Stopwatch stopWatch = new Stopwatch();
+        int[] numbers = new int[runs];
+
+        for (int i = 0; i < numbers.Length; i++) {
+            numbers [i] = input[rand.Next (6)];
+        }
+
+        stopWatch.Start();
+        for(int i = 0; i < runs; i++)
+        {
+            switch (numbers[i]) {
+                case 100:
+                    TestFunction();
+                    break;
+                case 200:
+                    TestFunction();
+                    break;
+                case 300:
+                    TestFunction();
+                    break;
+                case 400:
+                    TestFunction();
+                    break;
+                case 500:
+                    TestFunction();
+                    break;
+                case 600:
+                    TestFunction();
+                    break;
+            }  
+        }
+
+        stopWatch.Stop ();
+
+        Console.WriteLine ("Cons 7: {0}", stopWatch.Elapsed.TotalMilliseconds);
     }
 }
 
